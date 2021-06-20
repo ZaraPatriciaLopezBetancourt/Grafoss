@@ -57,6 +57,18 @@ public class Grafo {
         }
         return null;
     }
+    public boolean hayVertice(char dato) {
+        if (vertice == null) {
+            return false;
+        }
+        irPrimero();
+        for (NodoVertice buscar = vertice; buscar != null; buscar = buscar.sig) {
+            if (buscar.dato == dato) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     public boolean insertarArista(char origen, char destino) {
         NodoVertice nodoOrigen = buscarVertice(origen);
@@ -175,7 +187,7 @@ public class Grafo {
             for(int c=0; c<x; c++){
                 if(c==0)cad = cad + z.dato+" ";
                 cad = cad;
-                if(vertice.buscarArista(z.dato)== null){
+                if(z.buscarArista(vertice.dato)== null){
                     cad = cad + "0 |";
                 }else{
                     cad = cad + "1 |";

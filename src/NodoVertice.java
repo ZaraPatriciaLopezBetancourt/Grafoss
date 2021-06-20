@@ -47,18 +47,19 @@ public class NodoVertice {
         }
     }
 
-    public NodoArista buscarArista(NodoVertice direccion) {
+    public boolean hayArista(char direccion) {
         if (arista == null) {
-            return null;
+            return false;
         }
         irPrimero();
         for (NodoArista buscar = arista; buscar != null; buscar = buscar.abajo) {
-            if (buscar.direccion == direccion) {
-                return buscar;
+            if (buscar.direccion.dato == direccion) {
+                return true;
             }
         }
-        return null;
+        return false;
     }
+    
      public NodoArista buscarArista(char direccion) {
         if (arista == null) {
             return null;
@@ -80,7 +81,7 @@ public class NodoVertice {
             return false;
         }
 
-        NodoArista temp = buscarArista(direccion);
+        NodoArista temp = buscarArista(direccion.dato);
         if (temp == null) {
             return false;
         }
